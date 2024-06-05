@@ -43,7 +43,7 @@ export const getNextScreen = async (decryptedBody) => {
   if (action === "data_exchange") {
     // handle the request based on the current screen
     switch (screen) {
-      case "MY_SCREEN":
+      case "QUESTION_ONE":
         // TODO: process flow input data
         console.info("Input name:", data?.name);
 
