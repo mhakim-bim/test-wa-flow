@@ -39,6 +39,8 @@ app.post("/", async (req, res) => {
     );
   }
 
+  console.log(" Received Body :",req);
+
   if(!isRequestSignatureValid(req)) {
     // Return status code 432 if request signature does not match.
     // To learn more about return error codes visit: https://developers.facebook.com/docs/whatsapp/flows/reference/error-codes#endpoint_error_codes
