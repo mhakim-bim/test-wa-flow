@@ -10,7 +10,13 @@ import crypto from "crypto";
 export const decryptRequest = (body, privatePem, passphrase) => {
   const { encrypted_aes_key, encrypted_flow_data, initial_vector } = body;
 
+  console.log("private Pem : ", privatePem);
+  console.log("passphrase : ", passphrase);
+
   const privateKey = crypto.createPrivateKey({ key: privatePem, passphrase });
+  
+  console.log("private key : ", privateKey);
+  
   let decryptedAesKey = null;
   try {
     // decrypt AES key created by client
@@ -22,6 +28,9 @@ export const decryptRequest = (body, privatePem, passphrase) => {
       },
       Buffer.from(encrypted_aes_key, "base64")
     );
+
+    console.log("decrypted Aes Key key : ", decryptedAesKey);
+
   } catch (error) {
     console.error(error);
     /*

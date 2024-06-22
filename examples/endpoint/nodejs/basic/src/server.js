@@ -100,7 +100,12 @@ function isRequestSignatureValid(req) {
   }
 
   const signatureHeader = req.get("x-hub-signature-256");
+
+  console.log("Signature Header : ",signatureHeader);
+
   const signatureBuffer = Buffer.from(signatureHeader.replace("sha256=", ""), "utf-8");
+
+  console.log("Signature Buffer : ",signatureBuffer);
 
   const hmac = crypto.createHmac("sha256", APP_SECRET);
   const digestString = hmac.update(req.rawBody).digest('hex');
